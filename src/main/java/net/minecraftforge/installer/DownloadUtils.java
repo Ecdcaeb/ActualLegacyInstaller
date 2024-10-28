@@ -46,8 +46,8 @@ public class DownloadUtils {
 
     public static boolean OFFLINE_MODE = false;
 
-    public static LibraryDownload getLibraryDownloadSafely(Library library){
-        if(library.getDownloads() != null){
+    public static LibraryDownload getLibraryDownloadSafely(Library library) {
+        if (library.getDownloads() != null) {
             return library.getDownloads().getArtifact();
         } else {
             return new LibraryDownload(library.getName().getPath());

@@ -62,9 +62,9 @@ public class Version {
     public static class LibraryDownload extends Download {
         private String path;
 
-        public LibraryDownload(){}
+        public LibraryDownload() {}
 
-        public LibraryDownload(String path){
+        public LibraryDownload(String path) {
             this.path = path;
         }
 
