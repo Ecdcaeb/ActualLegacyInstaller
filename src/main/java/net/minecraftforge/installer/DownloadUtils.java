@@ -46,14 +46,18 @@ public class DownloadUtils {
 
     public static boolean OFFLINE_MODE = false;
 
+    public static LibraryDownload getLibraryDownloadSafely(Library library){
+        if(library.getDownloads() != null){
+            return library.getDownloads().getArtifact();
+        } else {
+            return new LibraryDownload(library.getName().getPath());
+        }
+    }
+
     public static boolean downloadLibrary(ProgressCallback monitor, Library library, File root, Predicate<String> optional, List<Artifact> grabbed, List<File> additionalLibraryDirs) {
         Artifact artifact = library.getName();
         File target = artifact.getLocalPath(root);
-        LibraryDownload download = library.getDownloads() == null ? null : library.getDownloads().getArtifact();
-        if (download == null) {
-            download = new LibraryDownload();
-            download.setPath(artifact.getPath());
-        }
+        LibraryDownload download = getLibraryDownloadSafely(library);
 
         if (!optional.test(library.getName().getDescriptor())) {
             monitor.message(String.format("Considering library %s: Not Downloading {Disabled}", artifact.getDescriptor()));
