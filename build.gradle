@@ -13,8 +13,8 @@ plugins {
     id 'org.cadixdev.licenser' version '0.6.1'
     id 'com.github.johnrengelman.shadow' version '7.0.0'
     id 'com.diffplug.spotless' version '6.22.0'
-    // id 'net.neoforged.gradleutils' version '3.0.0-alpha.11'
-    // id 'net.neoforged.gradleutils.spotless' version '3.0.0-alpha.11'
+    id 'net.neoforged.gradleutils' version '3.0.0-alpha.11'
+    id 'net.neoforged.gradleutils.spotless' version '3.0.0-alpha.11'
     //id 'maven'
     id 'maven-publish'
     id 'java'
@@ -26,7 +26,7 @@ spotlessUtils.configure(spotless)
 
 repositories {
     mavenCentral()
-    // maven gradleutils.maven
+    maven gradleutils.maven
 }
 
 group = 'net.neoforged'
