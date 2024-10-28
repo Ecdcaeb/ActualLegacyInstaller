@@ -23,12 +23,11 @@ jobs:
           fetch-tags: true
           fetch-depth: 0
 
-      - name: Setup Java
+      - name: Set up JDK
         uses: actions/setup-java@v4.2.1
         with:
-          java-version: '8'
-          distribution: 'zulu'
-          cache: gradle
+          java-version: '17'
+          distribution: 'temurin'
 
       - name: Fix Gradle permission
         run: chmod +x ./gradlew
