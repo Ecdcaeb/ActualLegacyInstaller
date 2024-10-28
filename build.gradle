@@ -13,8 +13,8 @@ plugins {
     id 'org.cadixdev.licenser' version '0.6.1'
     id 'com.github.johnrengelman.shadow' version '7.0.0'
     id 'com.diffplug.spotless' version '6.22.0'
-    id 'net.neoforged.gradleutils' version '3.0.0-alpha.11'
-    id 'net.neoforged.gradleutils.spotless' version '3.0.0-alpha.11'
+    // id 'net.neoforged.gradleutils' version '3.0.0-alpha.11'
+    // id 'net.neoforged.gradleutils.spotless' version '3.0.0-alpha.11'
     //id 'maven'
     id 'maven-publish'
     id 'java'
@@ -26,7 +26,7 @@ spotlessUtils.configure(spotless)
 
 repositories {
     mavenCentral()
-    maven gradleutils.maven
+    // maven gradleutils.maven
 }
 
 group = 'net.neoforged'
@@ -34,13 +34,13 @@ base {
     archivesName = 'legacyinstaller'
 }
 
-gradleutils.setupSigning(signAllPublications: true)
+//gradleutils.setupSigning(signAllPublications: true)
 
-gradleutils.version {
-    branches {
-        suffixBranch()
-    }
-}
+// gradleutils.version {
+//     branches {
+//         suffixBranch()
+//     }
+// }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(8)
 
@@ -50,11 +50,11 @@ license {
   newLine false
 }
 
-version = gradleutils.version
+version = "0" //gradleutils.version
 println('Installer Version: ' + version)
 
 ext {
-    SPEC_VERSION = gradleutils.gitInfo.tag
+    SPEC_VERSION = "0" //gradleutils.gitInfo.tag
     MAIN_CLASS = 'net.minecraftforge.installer.SimpleInstaller'
     MANIFEST = manifest{
         attributes('Main-Class': MAIN_CLASS)
@@ -188,21 +188,21 @@ tasks.register('runProductionTest', JavaExec) {
     args productionTestJar.archiveFile.get()
 }
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifact sourcesJar
-            artifact shrinkJar
-            artifact jar
-            pom {
-                name = project.archivesBaseName
-                packaging = 'jar'
-                description = 'NeoForge Forge Installer'
-                pomUtils.githubRepo(it, 'LegacyInstaller')
-            }
-        }
-    }
-    repositories {
-        maven gradleutils.publishingMaven
-    }
-}
+// publishing {
+//     publications {
+//         mavenJava(MavenPublication) {
+//             artifact sourcesJar
+//             artifact shrinkJar
+//             artifact jar
+//             pom {
+//                 name = project.archivesBaseName
+//                 packaging = 'jar'
+//                 description = 'NeoForge Forge Installer'
+//                 pomUtils.githubRepo(it, 'LegacyInstaller')
+//             }
+//         }
+//     }
+//     repositories {
+//         maven gradleutils.publishingMaven
+//     }
+// }
