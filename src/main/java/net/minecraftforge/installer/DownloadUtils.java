@@ -48,10 +48,10 @@ public class DownloadUtils {
 
     public static LibraryDownload getLibraryDownloadSafely(Library library) {
         if (library.getDownloads() != null) {
-            return library.getDownloads().getArtifact();
-        } else {
-            return new LibraryDownload(library.getName().getPath());
-        }
+            if (library.getDownloads().getArtifact() != null) {
+                return library.getDownloads().getArtifact();
+            } else return new LibraryDownload(library.getName().getPath());
+        } else return new LibraryDownload(library.getName().getPath());
     }
 
     public static boolean downloadLibrary(ProgressCallback monitor, Library library, File root, Predicate<String> optional, List<Artifact> grabbed, List<File> additionalLibraryDirs) {
