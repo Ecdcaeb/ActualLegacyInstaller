@@ -73,10 +73,14 @@ public class FatInstallerAction extends Action {
                 monitor.stage("Downloading server jar");
                 writeFromUrl(out, "minecraft/" + profile.getMinecraft() + "/server.jar", version.getDownload("server").getUrl());
 
-                monitor.stage("Downloading client mappings");
-                writeFromUrl(out, "minecraft/" + profile.getMinecraft() + "/client_mappings.txt", version.getDownload("client_mappings").getUrl());
-                monitor.stage("Downloading server mappings");
-                writeFromUrl(out, "minecraft/" + profile.getMinecraft() + "/server_mappings.txt", version.getDownload("server_mappings").getUrl());
+                try {
+                    monitor.stage("Downloading client mappings");
+                    writeFromUrl(out, "minecraft/" + profile.getMinecraft() + "/client_mappings.txt", version.getDownload("client_mappings").getUrl());
+                    monitor.stage("Downloading server mappings");
+                    writeFromUrl(out, "minecraft/" + profile.getMinecraft() + "/server_mappings.txt", version.getDownload("server_mappings").getUrl());
+                } catch (Throwable ignored) {
+                    monitor.message("Missing Offical Mapping");
+                }
             }
 
             if (OPTIONS.contains(Options.MC_LIBS) || OPTIONS.contains(Options.INSTALLER_LIBS)) {
