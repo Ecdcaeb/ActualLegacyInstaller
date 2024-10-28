@@ -408,7 +408,7 @@ public class InstallerPanel extends JPanel {
 
         dialog = optionPane.createDialog("");
         TRANSLATIONS.translate(dialog, new TranslationTarget<>(Dialog::setTitle), "installer.window.title", profile.getProfile());
-        dialog.setIconImages(Images.getWindowIcons());
+        dialog.setIconImages(Images.getWindowIcons(profile.getIcon()));
         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         dialog.setVisible(true);
         int result = (Integer) (optionPane.getValue() != null ? optionPane.getValue() : -1);
@@ -438,7 +438,7 @@ public class InstallerPanel extends JPanel {
                 ServerInstall.serverStarterJar = serverStarterJar.isSelected();
             }
 
-            ProgressFrame prog = new ProgressFrame(monitor, Thread.currentThread()::interrupt, "installer.frame.installing", profile.getProfile(), profile.getVersion());
+            ProgressFrame prog = new ProgressFrame(monitor, Thread.currentThread()::interrupt, "installer.frame.installing", profile);
             SimpleInstaller.hookStdOut(prog);
             Predicate<String> optPred = input -> {
                 Optional<OptionalListEntry> ent = this.optionals.stream().filter(e -> e.lib.getArtifact().equals(input)).findFirst();

@@ -28,6 +28,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
 import net.minecraftforge.installer.actions.ProgressCallback;
+import net.minecraftforge.installer.json.Install;
 
 public class ProgressFrame extends JFrame implements ProgressCallback {
     private static final long serialVersionUID = 1L;
@@ -43,18 +44,18 @@ public class ProgressFrame extends JFrame implements ProgressCallback {
     private final ProgressBar stepProgressController;
     private final JTextArea consoleArea;
 
-    public ProgressFrame(ProgressCallback parent, Runnable canceler, String titleKey, Object... titleArgs) {
+    public ProgressFrame(ProgressCallback parent, Runnable canceler, String titleKey, Install profile) {
         int gridY = 0;
 
         this.parent = parent;
 
         setResizable(false);
-        InstallerPanel.TRANSLATIONS.translate(this, new TranslationTarget<>(JFrame::setTitle), titleKey, titleArgs);
+        InstallerPanel.TRANSLATIONS.translate(this, new TranslationTarget<>(JFrame::setTitle), titleKey, profile.getProfile(), profile.getVersion());
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 600, 400);
         setContentPane(panel);
         setLocationRelativeTo(null);
-        setIconImages(Images.getWindowIcons());
+        setIconImages(Images.getWindowIcons(profile.getIcon()));
 
         GridBagLayout gridBagLayout = new GridBagLayout();
         gridBagLayout.columnWidths = new int[] { 600, 0 };
