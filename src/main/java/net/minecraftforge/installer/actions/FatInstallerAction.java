@@ -96,7 +96,7 @@ public class FatInstallerAction extends Action {
                 }
 
                 Set<String> duplicates = new HashSet<>();
-                libraries.removeIf(library -> (!duplicates.add(DownloadUtils.getLibraryDownloadSafely(library).getPath()));
+                libraries.removeIf(library -> (!duplicates.add(DownloadUtils.getLibraryDownloadSafely(library).getPath())));
                 monitor.stage("Downloading libraries");
                 monitor.getGlobalProgress().setMaxProgress(libraries.size());
                 int progress = 0;
