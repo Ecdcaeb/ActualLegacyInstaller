@@ -95,7 +95,6 @@ public class FatInstallerAction extends Action {
                     writeFromUrl(out, "serverstarter.jar", DownloadUtils.SERVER_STARTER_JAR);
                 }
 
-
                 libraries.removeIf(library -> (library.getDownloads() == null ? null : library.getDownloads().getArtifact()) == null);
                 Set<String> duplicates = new HashSet<>();
                 libraries.removeIf(library -> !duplicates.add(library.getDownloads() == null ? null : library.getDownloads().getArtifact().getPath()));
