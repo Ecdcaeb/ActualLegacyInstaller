@@ -44,7 +44,7 @@ final class Images {
                         result.add(getImage(s));
                     }
                     return result;
-                } catch (IOException ignored) {} // Use the defaults
+                } catch (Throwable ignored) {} // Use the defaults
             }
         }
         List<Image> result = new ArrayList<>();
