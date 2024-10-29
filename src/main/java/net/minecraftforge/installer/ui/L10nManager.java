@@ -211,7 +211,7 @@ public class L10nManager {
                 try (final OutputStream os = Files.newOutputStream(settingsFile)) {
                     final Properties props = new Properties();
                     props.put("language", locale.toLanguageTag());
-                    props.store(os, "NeoForge installer settings file");
+                    props.store(os, "ActualLegacyInstaller settings file");
                 }
                 Files.setAttribute(settingsFile, "dos:hidden", true);
             } catch (Exception exception) {

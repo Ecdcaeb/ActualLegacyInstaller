@@ -59,12 +59,12 @@ ext {
     MANIFEST = manifest{
         attributes('Main-Class': MAIN_CLASS)
         attributes([
-            'Specification-Title':      'Installer',
-            'Specification-Vendor':     'NeoForge',
+            'Specification-Title':      'ActualLegacyInstaller',
+            'Specification-Vendor':     'Hileb',
             'Specification-Version':    SPEC_VERSION,
             'Implementation-Title':     'SimpleInstaller',
             'Implementation-Version':   project.version,
-            'Implementation-Vendor':    'NeoForge'
+            'Implementation-Vendor':    'Hileb'
         ] as LinkedHashMap, 'net/minecraftforge/installer/')
     }
 }
@@ -166,7 +166,8 @@ tasks.register('testJar', Jar) {
     manifest.from(MANIFEST)
 }
 
-// Combine the shrunk jar with data from the current Neoforge installer
+//TODO : replace with Cleanroom Installer
+// Combine the shrunk jar with data from the current installer
 tasks.register('productionTestJar', Jar) {
     group = "build"
     dependsOn shrinkJar
@@ -179,8 +180,9 @@ tasks.register('productionTestJar', Jar) {
     manifest.from(MANIFEST)
 }
 
+//TODO : replace with Cleanroom Installer
 /**
- * Run this installer that contains the data from a real Neoforge installer.
+ * Run this installer that contains the data from a real installer.
  */
 tasks.register('runProductionTest', JavaExec) {
     dependsOn tasks.named("productionTestJar")

@@ -69,8 +69,8 @@ import net.minecraftforge.installer.json.OptionalLibrary;
 
 @SuppressWarnings("unused")
 public class InstallerPanel extends JPanel {
-    private static final Path INSTALLER_SETTINGS = new File(SimpleInstaller.getMCDir(), ".neoforge_installer.properties").toPath();
-    public static final L10nManager TRANSLATIONS = new L10nManager("neoforged/installer", INSTALLER_SETTINGS);
+    private static final Path INSTALLER_SETTINGS = new File(SimpleInstaller.getMCDir(), ".actual_legacy_installer.properties").toPath();
+    public static final L10nManager TRANSLATIONS = new L10nManager("i10n/installer", INSTALLER_SETTINGS);
 
     private static final long serialVersionUID = 1L;
     private File targetDir;

@@ -76,7 +76,7 @@ public class PostProcessors {
         try {
             if (!data.isEmpty()) {
                 StringBuilder err = new StringBuilder();
-                Path temp = Files.createTempDirectory("neoforge_installer");
+                Path temp = Files.createTempDirectory("actual_legacy_installer");
                 monitor.start("Created Temporary Directory: " + temp);
                 double steps = data.size();
                 int progress = 1;
