@@ -32,14 +32,25 @@ final class Images {
 
     static List<Image> getWindowIcons(String legacyBase64Icon) {
         if (legacyBase64Icon != null) {
-            try {
-                return Collections.singletonList(ImageIO.read(new ByteArrayInputStream(Base64.getDecoder().decode(legacyBase64Icon))));
-            } catch (IOException ignored) {} // Use the defaults
+            if (legacyBase64Icon.startswith("data:image/")) { // legacy base 64 format
+                try {
+                    return Collections.singletonList(ImageIO.read(new ByteArrayInputStream(Base64.getDecoder().decode(legacyBase64Icon))));
+                } catch (IOException ignored) {} // Use the defaults
+            } else { // custom paths
+                try {
+                    // new format, use `|` to split a string.
+                    List<Image> result = new ArrayList<>();
+                    for (String s : legacyBase64Icon.split("|")) {
+                        result.add(getImage(s));
+                    }
+                    return result;
+                } catch (IOException ignored) {} // Use the defaults
+            }
         }
         List<Image> result = new ArrayList<>();
-        result.add(getImage("/icons/neoforged_background_16x16.png"));
-        result.add(getImage("/icons/neoforged_background_32x32.png"));
-        result.add(getImage("/icons/neoforged_background_128x128.png"));
+        result.add(getImage("/icons/x16.png"));
+        result.add(getImage("/icons/x32.png"));
+        result.add(getImage("/icons/x128.png"));
         return result;
     }
 
