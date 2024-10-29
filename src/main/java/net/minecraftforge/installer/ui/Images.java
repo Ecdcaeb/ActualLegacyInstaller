@@ -32,7 +32,7 @@ final class Images {
 
     static List<Image> getWindowIcons(String legacyBase64Icon) {
         if (legacyBase64Icon != null) {
-            if (legacyBase64Icon.startswith("data:image/")) { // legacy base 64 format
+            if (legacyBase64Icon.startsWith("data:image/")) { // legacy base 64 format
                 try {
                     return Collections.singletonList(ImageIO.read(new ByteArrayInputStream(Base64.getDecoder().decode(legacyBase64Icon))));
                 } catch (IOException ignored) {} // Use the defaults
