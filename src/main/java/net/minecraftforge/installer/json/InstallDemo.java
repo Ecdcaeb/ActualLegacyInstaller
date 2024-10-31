@@ -12,9 +12,9 @@ public class InstallDemo extends InstallV1 {
         install.version = "0";
         install.icon = null;
         install.minecraft = "1.4.7";
-        install.id = "/big_logo.png"
+        install.id = "/big_logo.png";
         install.path = "";
-        install.welcome = "Welcome to the Actual Legacy Installer.",
+        install.welcome = "Welcome to the Actual Legacy Installer.";
         install.data = new HashMap();
         install.processors = new ArrayList();
     }
