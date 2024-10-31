@@ -39,7 +39,7 @@ public class Util {
         try (InputStream stream = Util.class.getResourceAsStream("/install_profile.json")) {
             data = readFully(stream);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            return new InstallDemo();
         }
         Spec spec = GSON.fromJson(new InputStreamReader(new ByteArrayInputStream(data), StandardCharsets.UTF_8), Spec.class);
         switch (spec.getSpec()) {
